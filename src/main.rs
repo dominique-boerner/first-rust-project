@@ -14,7 +14,7 @@ pub struct Duck {
 
 impl DuckBirdBeak for Duck {
     fn quack(&self) {
-        println!("Quack! I'am {}!", &self.name)
+        println!("Quack! I am {}!", &self.name)
     }
 }
 
