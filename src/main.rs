@@ -1,43 +1,17 @@
-pub trait DuckBirdBeak {
-    fn quack(&self);
-}
+use crate::i18n_file_reader::{I18nFile, I18nFileReader};
 
-pub trait DuckBirdLegs {
-    fn move_forward(&self);
-    fn move_left(&self);
-    fn move_right(&self);
-}
+mod i18n_file_reader;
 
-pub struct Duck {
-    name: String
-}
-
-impl DuckBirdBeak for Duck {
-    fn quack(&self) {
-        println!("Quack! I am {}!", &self.name)
-    }
-}
-
-impl DuckBirdLegs for Duck {
-    fn move_forward(&self) {
-        println!("I move forward!")
-    }
-
-    fn move_left(&self) {
-        println!("I move left!")
-    }
-
-    fn move_right(&self) {
-        println!("I move right!")
-    }
-}
-
+/// Entry point of the application
 pub fn main() {
-    let duck_name = String::from("Chris");
-    let duck = Duck { name: duck_name };
+    let i18n_folder_path = String::from("i18n");
+    let path = String::from("de.json");
+    let i18n_file = I18nFile { path, i18n_folder_path};
 
-    duck.quack();
-    duck.move_forward();
-    duck.move_left();
-    duck.move_right();
+    if !i18n_file.file_exists() {
+        i18n_file.initialize_file();
+    }
+
+    let result = i18n_file.read_file();
+    println!("{:?}", result)
 }
