@@ -1,4 +1,4 @@
-use crate::i18n_file_reader::{I18nFile, I18nFileReader};
+use crate::i18n_file_reader::{I18nFile};
 
 mod i18n_file_reader;
 
